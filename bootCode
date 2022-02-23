@@ -1,0 +1,31 @@
+#! /bin/sh
+# /etc/init.d/guyatest
+ 
+### BEGIN INIT INFO
+# Provides:          guyatest
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: start a program from boot
+# Description:       A simple script  which will start a program from boot and stop upon shut-down
+### END INIT INFO
+ 
+# Put any commands you always want to run here.
+ 
+case "$1" in
+start)
+echo "Starting guyatest.py"
+# run the program you want to start
+/home/pi/guyaUpdate/guyatest.py
+;;
+stop)
+echo "Stopping guyatest.py"
+# end the program you want to stop
+killall guyatest.py
+;;
+*)
+ echo "Usage: /etc/init.d/guyatest.py {start|stop}"
+ exit 1
+ ;;
+esac
